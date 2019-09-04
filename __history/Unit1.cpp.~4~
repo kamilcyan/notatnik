@@ -1,0 +1,44 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Action1Execute(TObject *Sender)
+{
+   if(OpenDialog1->Execute())
+   {
+	   RichEdit1->Lines->LoadFromFile
+	   (OpenDialog1->FileName);
+   }
+}
+//---------------------------------------------------------------------------
+
+void TForm1::DodajZakladke(TPageControl *APageControl)
+{
+ /* Tworzenie nowego obiektu klasy TTabSheet. Jako argument konstruktora
+nale¿y podaæ komponent klasy TpageControl, do którego dodajemy zak³adkê.*/
+ TTabSheet *Zakladka;
+ Zakladka = new TTabSheet(APageControl);
+ /* Dla nowo utworzonej zak³adki musimy jeszcze ustawiæ w³aœciwoœæ
+PageControl, czyli wskazanie na w³aœciciela */
+ Zakladka->PageControl = APageControl;
+ /* Na koniec ustawiamy tekst, który wyœwietli siê jako nazwa zak³adki*/
+ Zakladka->Caption="Nowy dokument";
+}
+//---------------------------------------------------------------------------
+
+
+
+

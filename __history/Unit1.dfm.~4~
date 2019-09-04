@@ -1,0 +1,119 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 540
+  ClientWidth = 1009
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel3: TPanel
+    Left = 0
+    Top = 499
+    Width = 1009
+    Height = 41
+    Align = alBottom
+    Caption = 'Panel3'
+    TabOrder = 0
+    ExplicitLeft = 424
+    ExplicitTop = 272
+    ExplicitWidth = 185
+  end
+  object Panel4: TPanel
+    Left = 0
+    Top = 0
+    Width = 1009
+    Height = 499
+    Align = alClient
+    Caption = 'Panel4'
+    TabOrder = 1
+    ExplicitLeft = 424
+    ExplicitTop = 272
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object PageControl1: TPageControl
+      Left = 1
+      Top = 1
+      Width = 1007
+      Height = 497
+      Align = alClient
+      TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 1009
+      ExplicitHeight = 417
+    end
+    object RichEdit1: TRichEdit
+      Left = 1
+      Top = 1
+      Width = 1007
+      Height = 497
+      Align = alClient
+      Font.Charset = EASTEUROPE_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      Lines.Strings = (
+        'RichEdit1')
+      ParentFont = False
+      TabOrder = 1
+      Zoom = 100
+      ExplicitLeft = 416
+      ExplicitTop = 168
+      ExplicitWidth = 185
+      ExplicitHeight = 89
+    end
+  end
+  object ActionList1: TActionList
+    Left = 968
+    Top = 144
+    object Action1: TAction
+      Caption = 'Otworz'
+      OnExecute = Action1Execute
+    end
+    object Action3: TAction
+      Caption = 'Action3'
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 968
+    Top = 88
+  end
+  object MainMenu1: TMainMenu
+    Left = 968
+    Top = 200
+    object Plik1: TMenuItem
+      Caption = 'Plik'
+      object Otworz1: TMenuItem
+        Action = Action1
+      end
+      object Nowy1: TMenuItem
+        OnClick = Action2Execute
+      end
+      object Zamknij1: TMenuItem
+        Caption = 'Zamknij'
+      end
+      object Zapisz1: TMenuItem
+        Caption = 'Zapisz'
+      end
+    end
+    object Strona1: TMenuItem
+      Caption = 'Strona'
+      object Nowa1: TMenuItem
+        Caption = 'Nowa'
+        OnClick = Action2Execute
+      end
+      object Zamknij2: TMenuItem
+        Caption = 'Zamknij'
+      end
+    end
+  end
+end
