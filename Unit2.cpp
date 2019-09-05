@@ -4,6 +4,7 @@
 
 #include "Unit2.h"
 //---------------------------------------------------------------------------
+
 #pragma package(smart_init)
 
  TDocument::TDocument(TPageControl *APageControl): TTabSheet(APageControl)
@@ -32,3 +33,7 @@ FileName = AFileName;
  RichEdit->Lines->SaveToFile(FileName);
 
 }
+
+
+
+

@@ -1,0 +1,165 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 556
+  ClientWidth = 1065
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel4: TPanel
+    Left = 0
+    Top = 0
+    Width = 1065
+    Height = 512
+    Align = alClient
+    Caption = 'Panel4'
+    TabOrder = 0
+    ExplicitHeight = 556
+    object PageControl1: TPageControl
+      Left = 1
+      Top = 41
+      Width = 1063
+      Height = 470
+      Align = alClient
+      TabOrder = 0
+      ExplicitTop = 16
+      ExplicitHeight = 495
+    end
+    object ToolBar1: TToolBar
+      Left = 1
+      Top = 1
+      Width = 1063
+      Height = 40
+      ButtonHeight = 40
+      ButtonWidth = 40
+      Caption = 'ToolBar1'
+      TabOrder = 1
+      ExplicitTop = -5
+      object New: TToolButton
+        Left = 0
+        Top = 0
+        Action = Nowy
+      end
+      object ToolButton2: TToolButton
+        Left = 40
+        Top = 0
+        Action = Otworz
+      end
+      object ToolButton3: TToolButton
+        Left = 80
+        Top = 0
+        Action = Zapisz
+      end
+      object ToolButton4: TToolButton
+        Left = 120
+        Top = 0
+        Action = Zamknij
+      end
+      object ToolButton5: TToolButton
+        Left = 160
+        Top = 0
+        Action = Statystyki
+      end
+    end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 512
+    Width = 1065
+    Height = 44
+    Panels = <
+      item
+        Alignment = taCenter
+        Width = 200
+      end
+      item
+        Alignment = taCenter
+        Width = 200
+      end
+      item
+        Alignment = taCenter
+        Width = 200
+      end
+      item
+        Alignment = taCenter
+        Width = 200
+      end
+      item
+        Alignment = taCenter
+        Width = 20
+      end>
+    ExplicitTop = 517
+  end
+  object ActionList1: TActionList
+    Left = 968
+    Top = 144
+    object Otworz: TAction
+      Caption = 'Otworz'
+      OnExecute = OtworzExecute
+    end
+    object Nowy: TAction
+      Caption = 'Nowy'
+      OnExecute = NowyExecute
+    end
+    object Zapisz: TAction
+      Caption = 'Zapisz'
+      OnExecute = ZapiszExecute
+    end
+    object Statystyki: TAction
+      Caption = 'Statystyki'
+      OnExecute = StatystykiExecute
+    end
+    object Zamknij: TAction
+      Caption = 'Zamknij'
+      OnExecute = ZamknijExecute
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 968
+    Top = 88
+  end
+  object MainMenu1: TMainMenu
+    Left = 968
+    Top = 200
+    object Plik1: TMenuItem
+      Caption = 'Plik'
+      object Otworz1: TMenuItem
+        Action = Otworz
+      end
+      object Zamknij1: TMenuItem
+        Action = Zamknij
+      end
+      object Zapisz1: TMenuItem
+        Action = Zapisz
+      end
+    end
+    object Strona1: TMenuItem
+      Caption = 'Strona'
+      object Nowa1: TMenuItem
+        Action = Nowy
+      end
+      object Zamknij2: TMenuItem
+        Action = Zamknij
+      end
+    end
+    object SStatystyki1: TMenuItem
+      Caption = 'Statystyki'
+      object Policz1: TMenuItem
+        Action = Statystyki
+      end
+    end
+  end
+  object SaveDialog1: TSaveDialog
+    FileName = 'C:\Users\Kamkam\Desktop\ouihhu'
+    Left = 968
+    Top = 256
+  end
+end
