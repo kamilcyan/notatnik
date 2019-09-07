@@ -25,8 +25,6 @@ class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
 	TPanel *Panel4;
-	TPageControl *PageControl1;
-
 	TActionList *ActionList1;
 	TAction *Otworz;
 	TAction *Nowy;
@@ -52,13 +50,30 @@ __published:	// IDE-managed Components
 	TToolButton *ToolButton4;
 	TToolButton *ToolButton5;
 	TImageList *ImageList1;
-	TStatusBar *StatusBar2;
 	TStatusBar *StatusBar3;
+	TPopupMenu *PopupMenu1;
+	TMenuItem *Zamknij3;
+	TMenuItem *Statystyki1;
+	TMenuItem *Zamknij4;
+	TMenuItem *Zapisz2;
+	TPageControl *PageControl1;
+	TStatusBar *StatusBar2;
+	TPanel *Panel1;
+	TFontDialog *FontDialog1;
+	TToolButton *ToolButton1;
+	TMenuItem *Edytuj1;
+	TAction *Edytuj;
+	TMenuItem *Edytuj2;
 	void __fastcall OtworzExecute(TObject *Sender);
 	void __fastcall NowyExecute(TObject *Sender);
 	void __fastcall ZapiszExecute(TObject *Sender);
 	void __fastcall StatystykiExecute(TObject *Sender);
 	void __fastcall ZamknijExecute(TObject *Sender);
+
+	void __fastcall Update(TObject *Sender);
+	void __fastcall FontDialog1Apply(TObject *Sender, HWND Wnd);
+	void __fastcall ToolButton1Click(TObject *Sender);
+
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

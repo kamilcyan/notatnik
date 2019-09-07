@@ -14,7 +14,7 @@
  RichEdit = new TRichEdit(this);
  RichEdit->Parent = this;
  RichEdit->Align = alClient;
- RichEdit->WordWrap = false;
+ RichEdit->WordWrap = true;
  RichEdit->ScrollBars = ssBoth;
 }
 
@@ -22,6 +22,8 @@
  void TDocument::LoadFromFile(String AFileName)
 {
  FileName = AFileName;
+
+ RichEdit->WordWrap = true;
  RichEdit->Lines->LoadFromFile(FileName);
  Caption = ExtractFileName(FileName);
 }

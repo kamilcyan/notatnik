@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------
 
 #include <vcl.h>
+#include <Unit2.cpp>
 #pragma hdrstop
 
 #include "Unit1.h"
@@ -9,13 +10,17 @@
 #pragma resource "*.dfm"
 
 TForm1 *Form1;
-
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
-		TDocument *open;
-	   open = new TDocument(PageControl1);
+	TDocument *open;
+	open = new TDocument(PageControl1);
+
+	open->RichEdit->WordWrap = true;
+	open->RichEdit->Lines->Clear();
+
+	open->RichEdit->OnChange = Update;
 
 }
 //---------------------------------------------------------------------------
@@ -24,11 +29,13 @@ void __fastcall TForm1::OtworzExecute(TObject *Sender)
 {
    if(OpenDialog1->Execute())
    {
+
 	   TDocument *open;
 	   open = new TDocument(PageControl1);
-
+	   open->RichEdit->WordWrap = true;
 	   open->LoadFromFile(OpenDialog1->FileName);
 
+	   open->RichEdit->OnChange = Update;
    }
 
 }
@@ -40,6 +47,8 @@ void __fastcall TForm1::NowyExecute(TObject *Sender)
 	TDocument *open;
 	open = new TDocument(PageControl1);
 
+	open->RichEdit->WordWrap = true;
+	open->RichEdit->OnChange = Update;
 }
 //---------------------------------------------------------------------------
 
@@ -62,14 +71,13 @@ void __fastcall TForm1::ZapiszExecute(TObject *Sender)
 
 void TForm1::WyodrebnijString()
 {
-
+	TTablica tabSlow;
 	TTabSheet *tab;
 	tab = PageControl1->ActivePage;
 	TDocument *doc;
 	doc = dynamic_cast<TDocument*>(tab);
 	String text = doc->RichEdit->Text;
 	int dlugCalosc = text.Length();
-
 
 
 	TStringList* akapity =  Tokenize(text, "\n");
@@ -96,20 +104,21 @@ void TForm1::WyodrebnijString()
 	StatusBar1->Panels->Items[3]->Text = "Ilosc akapitow: " + IntToStr(0);
 	}
 
-	TTablica tabSlow;
+
 
 	LiczZnaki(spacje , tabSlow);
 
+	StatusBar2->Panels->Items[0]->Text = "L. w wyrazie/ ile razy:" ;
 	for(int i = 1; i<10; i++)
 	{
-		StatusBar2->Panels->Items[i]->Text = "Wartosc: " + IntToStr(tabSlow[i]);
+		StatusBar2->Panels->Items[i]->Text = IntToStr(i) + " liter: " + IntToStr(tabSlow[i]);
 	}
 
-	for(int i = 10; i<20; i++)
+	for(int i = 10; i<19; i++)
 	{
-		StatusBar3->Panels->Items[i-10]->Text = "Wartosc: " + IntToStr(tabSlow[i-10]);
+		StatusBar3->Panels->Items[i-10]->Text = IntToStr(i) + " liter: " + IntToStr(tabSlow[i]);
 	}
-
+	StatusBar3->Panels->Items[9]->Text ="Wiecej liter: " + IntToStr(tabSlow[19]);
 }
 
 
@@ -146,7 +155,7 @@ TStringList *TForm1::Tokenize (String s,String delimiter)
 
 void __fastcall TForm1::StatystykiExecute(TObject *Sender)
 {
-   WyodrebnijString();
+  WyodrebnijString();
 }
 //---------------------------------------------------------------------------
 
@@ -178,5 +187,57 @@ void TForm1::LiczZnaki(TStringList *slowa , TTablica &TablicaWynikowa )
  TablicaWynikowa[dl] = TablicaWynikowa[dl] + 1;
  }
 }
+
+
+
+
+//---------------------------------------------------------------------------
+
+
+
+
+ /*
+void __fastcall TForm1::PageControl1Changing(TObject *Sender, bool &AllowChange)
+{
+	TTabSheet *tab;
+	tab = PageControl1->ActivePage;
+	TDocument *doc;
+	doc = dynamic_cast<TDocument*>(tab);
+
+	doc->RichEdit->
+}                   */
+//---------------------------------------------------------------------------
+
+
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Update(TObject *Sender){
+   WyodrebnijString();
+}
+
+
+void __fastcall TForm1::FontDialog1Apply(TObject *Sender, HWND Wnd)
+{
+	FontDialog1->Execute();
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm1::ToolButton1Click(TObject *Sender)
+{
+
+	 TTabSheet *tab;
+	 tab = PageControl1->ActivePage;
+	 TDocument *open;
+	 open = dynamic_cast<TDocument*>(tab);
+
+	   FontDialog1->Execute();
+		open->RichEdit->SelAttributes->Color = FontDialog1->Font->Color;
+		open->RichEdit->SelAttributes->Size = FontDialog1->Font->Size;
+		open->RichEdit->SelAttributes->Style = FontDialog1->Font->Style;
+		open->RichEdit->SelAttributes->Name=FontDialog1->Font->Name;
+
+}
+//---------------------------------------------------------------------------
 
 
